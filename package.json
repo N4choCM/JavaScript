@@ -1,14 +1,16 @@
 {
-  "name": "sesion9",
+  "name": "curso-javascript",
   "version": "1.0.0",
-  "description": "Sesion 9 exercise",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Nacho Campos Martí",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "winston": "^3.8.1"
+    "chalk": "^5.0.1"
   }
 }

@@ -1,17 +1,5 @@
-const winston = require('winston');
-
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { service: 'user-service' },
-  transports: [
-    //
-    // - Write all logs with importance level of `error` or less to `error.log`
-    // - Write all logs with importance level of `info` or less to `combined.log`
-    //
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' }),
-  ],
-});
-
-module.exports = logger;
+import {suma, multiplica} from './modulos/controller.js';
+import chalk from 'chalk';
+var suma1 = suma(1,2);
+var suma2 = suma(4,5);
+console.log(chalk.green(multiplica(suma1, suma2)));
