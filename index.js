@@ -1,14 +1,30 @@
-var name = "Nacho";
-var lastNames = "Campos Martí";
-const me = {
-    "name": name,
-    "lastNames": lastNames
-};
+const parrafos = document.querySelectorAll(".parrafo");
+const secciones = document.querySelectorAll(".seccion");
 
-sessionStorage.setItem("person", JSON.stringify(me));
-localStorage.setItem("person", JSON.stringify(me));
-document.cookie = "ChocolateCookie=NachoCookie1; expires=" + new Date(2023, 4, 8).toUTCString(); 
+parrafos.forEach(parrafo => {
+    parrafo.addEventListener("dragstart", event => {
+        console.log("Estoy arrastrando el párrafo " + parrafo.innerText)
+        parrafo.classList.add("dragging")
+        event.dataTransfer.setData("id", parrafo.id)
+        const elemento_fantasma = document.querySelector(".imagen-fantasma")
+        event.dataTransfer.setDragImage(elemento_fantasma, 0, 0)
+    })
 
-console.log(JSON.parse(sessionStorage.getItem("person")));
-console.log(JSON.parse(localStorage.getItem("person")));
-console.log(document.cookie);
+    parrafo.addEventListener("dragend", () => {
+        parrafo.classList.remove("dragging")
+    })
+})
+
+secciones.forEach(seccion => {
+    seccion.addEventListener("dragover", event => {
+        event.preventDefault()
+        event.dataTransfer.dropEffect = "copy"
+    })
+
+    seccion.addEventListener("drop", event => {
+        console.log("Drop")
+        const id_parrafo = event.dataTransfer.getData("id")
+        const parrafo = document.getElementById(id_parrafo)
+        seccion.appendChild(parrafo)
+    })
+})
