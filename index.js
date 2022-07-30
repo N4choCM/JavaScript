@@ -1,11 +1,14 @@
-const button = document.querySelector("#btn");
+var name = "Nacho";
+var lastNames = "Campos Martí";
+const me = {
+    "name": name,
+    "lastNames": lastNames
+};
 
-button.addEventListener("click", () => {
-    alert("Click en el botón");
-});
+sessionStorage.setItem("person", JSON.stringify(me));
+localStorage.setItem("person", JSON.stringify(me));
+document.cookie = "ChocolateCookie=NachoCookie1; expires=" + new Date(2023, 4, 8).toUTCString(); 
 
-$(document).ready(function () {
-    $("#btn").click(() => {
-        console.log("Hola, estoy utilizando JQuery.")
-    })
-  });
+console.log(JSON.parse(sessionStorage.getItem("person")));
+console.log(JSON.parse(localStorage.getItem("person")));
+console.log(document.cookie);
